@@ -1,0 +1,7 @@
+# Don't check images into source
+*.jpg
+*.jpeg
+*.png
+*.svg
+*.ico
+*.bmp

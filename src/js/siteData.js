@@ -1,0 +1,122 @@
+let resumeData = {
+    "name": ["Zach", "Bingham"],
+    "email": "zach@zach-bingham.com",
+    "role": "DevOps Engineer",
+    "profilePicUrl": "img/profile.jpeg",
+    "roleDescription": "",
+    "socialLinks": {
+        "linkedin": {
+          "url": "https://www.linkedin.com/in/zach-bingham-53426581/",
+          "className": "fa fa-linkedin"
+        },
+        "github": {
+          "url": "https://github.com/zach-23",
+          "className": "fa fa-github"
+        }
+    },
+    "aboutMe": "DevOps Engineer with three years of experience. Certifications in top three public clouds.",
+    "address": "Chicago, IL",
+    "education": [
+      {
+        "universityName": "Ball State University",
+        "degree": "M.S. Information and Communication Sciences",
+        "dateStarted": "Aug 2016",
+        "dateCompleted": "Jul 2017",
+        "description": "Concentration in Business Communications, Cloud Security, and Computer Networking technologies"
+      },
+      {
+        "universityName": "Ball State University",
+        "degree": "B.A. International Business",
+        "dateStarted": "Aug 2010",
+        "dateCompleted": "Jul 2014",
+        "description": "Minors in Economics and German"
+      }
+    ],
+    "work": [
+      {
+        "companyName": "Slalom Consulting Inc",
+        "title": "Engineer - Cloud, DevOps, and Security",
+        "dateStarted": "Mar 2019",
+        "dateUntil": "Present",
+        "responsibilities": [
+          "Develops CI/CD pipelines to deploy solutions to client environments in AWS, GCP, and Azure",
+          "Provisions serverless applications, container orchestrations, and traditional infrastructure using IaC and DevOps best principles",
+          "Collaborates with both internal and client teams using Agile to gather requirements, prepare sprints and backlogs, and define acceptance criteria for solutions"
+        ]
+      },
+      {
+        "companyName": "Edelman",
+        "title": "Engineer - DevOps",
+        "dateStarted": "Aug 2020",
+        "dateUntil": "Mar 2019",
+        "responsibilities": [
+          "Administered AWS and Azure environments for business applications",
+          "Designed Highly-Available deployments for company web applications",
+          "Documented solutions and provided training to clients, vendors, and internal teams",
+          "Provided support for Windows and Linux server management, Azure Active Directory, and website availability"
+        ]
+      },
+    ],
+    "skills": {
+      "languages": [
+        "Python",
+        "BASH",
+        "PowerShell",
+        "JSON",
+        "HCL",
+        "HTML",
+        "JavaScript"
+      ],
+      "highlights": [
+        "Major Clouds: AWS, GCP, Azure",
+        "CI/CD: Jenkins, Azure DevOps, AWS Cloudbuild",
+        "Containers: Kubernetes, Docker, Nomad",
+        "REST APIs",
+        "Serverless Framework",
+        "Infrastructure as Code: Terraform, CloudFormation, Azure Resource Manager"
+      ],
+      "fontAwesomeIcons": [
+        "python",
+        "aws",
+        "git",
+        "linux",
+        "jenkins",
+        "node-js",
+        "microsoft",
+        "google",
+        "docker"
+      ]
+    },
+    "certifications": [
+      {
+        "title": "AWS Certified Solutions Architect - Associate",
+        "dateEarned": "Feb 2019",
+        "dateExpires": "Feb 2022",
+        "credentialUrl": "https://www.youracclaim.com/badges/a6dfd855-0d92-4e35-886e-3cfcec3cd028"
+      },
+      {
+        "title": "Google Cloud Certified Associate Cloud Engineer",
+        "dateEarned": "Jul 2020",
+        "dateExpires": "Jul 2022",
+        "credentialUrl": "https://www.credential.net/6d89f960-38b7-4022-8f58-8bbe0c8f32f3?key=c07cf3332c7e5d57efddc4170600a04136aec5caa48dbe9fe40d2346654bc53d&record_view=true"
+      },
+      {
+        "title": "Hashicorp Certified Terraform Associate",
+        "dateEarned": "Jul 2020",
+        "dateExpires": "Jul 2022",
+        "credentialUrl": "https://www.youracclaim.com/badges/ee6b772c-bbd9-42a6-b086-52c1b58396eb"
+      },
+      {
+        "title": "Microsoft Certified: Azure Developer Associate",
+        "dateEarned": "Sep 2020",
+        "dateExpires": "Sep 2022",
+        "credentialUrl": "https://www.youracclaim.com/earner/earned/badge/e9d83f72-3c4b-44e7-93d8-dc352a626f71"
+      }
+    ]
+  };
+
+let siteConfig = {
+  "analyticsId": 'UA-179550062-1',
+  "title": "Zach Bingham",
+  "resumeFileName": "Zach_Bingham_Resume_2020.pdf"
+};
