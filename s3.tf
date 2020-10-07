@@ -1,6 +1,6 @@
 locals {
-    log_bucket = var.env != "prod" ? "logs.${var.env}.${var.my_url}" : "logs.${var.my_url}"
-    web_bucket = var.env != "prod" ? "${var.env}.${var.my_url}" : var.my_url
+  log_bucket = var.env != "prod" ? "logs.${var.env}.${var.my_url}" : "logs.${var.my_url}"
+  web_bucket = var.env != "prod" ? "${var.env}.${var.my_url}" : var.my_url
 }
 
 resource "aws_s3_bucket" "logs" {
