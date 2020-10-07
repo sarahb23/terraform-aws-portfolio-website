@@ -1,0 +1,3 @@
+# Minified JS and CSS should be created after customization
+# Minimization is optional
+*.min.*
