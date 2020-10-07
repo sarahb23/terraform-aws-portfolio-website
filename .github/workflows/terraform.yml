@@ -32,7 +32,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: TF_WORKSPACE=${TF_ENV}; terraform init -input=false
+        run: TF_WORKSPACE=${TF_ENV}; terraform init
 
       - name: Terraform Plan
         id: plan
