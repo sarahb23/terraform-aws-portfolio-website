@@ -5,11 +5,7 @@ on:
     branches:
       - master
   pull_request:
-env:
-    if: github.ref == 'refs/heads/main'
-    TF_VAR_env: prod
-    if: github.ref == 'refs/heads/development'
-    TF_VAR_env: dev
+
 jobs:
   terraform:
     name: "Terraform"
@@ -17,7 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      - name: Set environment for branch
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+              echo "::set-env name=TF_VAR_env::prod"
+          elif [[ $GITHUB_REF == 'refs/heads/development' ]]; then
+              echo "::set-env name=TF_VAR_env::dev"
+          fi
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
