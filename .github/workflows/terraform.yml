@@ -34,7 +34,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init -input=false
 
       - name: Terraform Plan
         id: plan
@@ -75,4 +75,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform workspace select ${TF_ENV} && terraform apply -auto-approve
+        run: terraform workspace select ${{ env.TF_WORKSPACE }} && terraform apply -auto-approve
