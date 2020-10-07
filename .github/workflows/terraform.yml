@@ -30,8 +30,8 @@ jobs:
 
       - name: Echo workspace
         id: wkspc
-        run: echo ${{ env.TF_WORKSPACE }}
-        
+        run: echo $GITHUB_REF
+
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
