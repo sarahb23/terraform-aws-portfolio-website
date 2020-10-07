@@ -18,9 +18,9 @@ jobs:
       - name: Set environment for branch
         run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-              echo "::set-env name=TF_ENV::prod"
+              echo "::set-env name=TF_WORKSPACE::prod"
           elif [[ $GITHUB_REF == 'refs/heads/development' ]]; then
-              echo "::set-env name=TF_ENV::dev"
+              echo "::set-env name=TF_WORKSPACE::dev"
           fi
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -34,7 +34,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: TF_WORKSPACE=${TF_ENV}; terraform init
+        run: terraform init
 
       - name: Terraform Plan
         id: plan
