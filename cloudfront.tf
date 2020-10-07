@@ -1,6 +1,5 @@
 locals {
   s3_origin_id = "myS3Origin"
-  log_bucket   = "logs.${var.my_url}"
 }
 
 resource "aws_cloudfront_distribution" "this" {

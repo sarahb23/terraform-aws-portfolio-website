@@ -1,3 +1,8 @@
+locals {
+    log_bucket = var.env != "prod" ? "logs.${var.env}.${var.my_url}" : "logs.${var.my_url}"
+    web_bucket = var.env != "prod" ? "${var.env}.${var.my_url}" : var.my_url
+}
+
 resource "aws_s3_bucket" "logs" {
   provider      = aws.main
   bucket        = local.log_bucket
@@ -6,7 +11,7 @@ resource "aws_s3_bucket" "logs" {
 
 resource "aws_s3_bucket" "web" {
   provider      = aws.main
-  bucket        = var.my_url
+  bucket        = local.web_bucket
   acl           = "private"
   policy        = data.aws_iam_policy_document.bucket_policy.json
   force_destroy = true
@@ -27,7 +32,7 @@ data "aws_iam_policy_document" "bucket_policy" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.my_url}/*",
+      "arn:aws:s3:::${local.web_bucket}/*",
     ]
 
     condition {
@@ -51,7 +56,7 @@ data "aws_iam_policy_document" "bucket_policy" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.my_url}/*",
+      "arn:aws:s3:::${local.web_bucket}/*",
     ]
 
     condition {
@@ -59,7 +64,7 @@ data "aws_iam_policy_document" "bucket_policy" {
       variable = "aws:UserAgent"
 
       values = [
-        base64sha512("REFER-SECRET-19265125-${var.my_url}-52865926"),
+        base64sha512("REFER-SECRET-19265125-${local.web_bucket}-52865926"),
       ]
     }
 
@@ -72,6 +77,6 @@ data "aws_iam_policy_document" "bucket_policy" {
 
 resource "null_resource" "upload_site_assets" {
   provisioner "local-exec" {
-    command = "aws s3 sync ${path.module}/src/ s3://${var.my_url}/ --exclude '*.git*' --exclude 'README'"
+    command = "aws s3 sync ${path.module}/src/ s3://${local.web_bucket}/ --exclude '*.git*' --exclude 'README'"
   }
 }

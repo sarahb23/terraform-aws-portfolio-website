@@ -18,7 +18,7 @@
 - Two S3 buckets
   - Website content hosting
   - CloudFront logging
-- Website content uploaded via the aws cli
+- Website content uploaded via the `aws cli`
 - ACM certificate with DNS validation through Route53
 - A CloudFront distribution with a custom domain and ACM certificate for HTTPS
 

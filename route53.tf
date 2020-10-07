@@ -6,7 +6,7 @@ data "aws_route53_zone" "this" {
 resource "aws_route53_record" "website" {
   provider = aws.main
   zone_id  = data.aws_route53_zone.this.id
-  name     = var.my_url
+  name     = local.web_bucket
   type     = "A"
 
   alias {
