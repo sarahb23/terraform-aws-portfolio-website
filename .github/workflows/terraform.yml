@@ -11,6 +11,10 @@ on:
   pull_request:
     branches:
       - main
+    paths-exclude:
+      # Don't trigger Terraform builds when non Terraform files are updated
+      - 'src/**'
+      - 'README.md'
 
 jobs:
   terraform:
