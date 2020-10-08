@@ -75,4 +75,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform workspace select $TF_WORKSPACE && terraform apply -auto-approve
+        run: terraform init && terraform apply -auto-approve
