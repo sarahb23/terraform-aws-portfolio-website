@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   terraform:
@@ -16,9 +18,9 @@ jobs:
       - name: Set environment for branch
         run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-              echo "::set-env name=TF_VAR_env::prod"
-          elif [[ $GITHUB_REF == 'refs/heads/development' ]]; then
-              echo "::set-env name=TF_VAR_env::dev"
+              echo "TF_WORKSPACE=prod" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == 'refs/heads/development' || $GITHUB_REF == *'refs/pull'* ]]; then
+              echo "TF_WORKSPACE=dev" >> $GITHUB_ENV
           fi
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -32,7 +34,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: terraform init -input=false
 
       - name: Terraform Plan
         id: plan
@@ -73,4 +75,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -var env=${TF_VAR_env}
+        run: terraform workspace select $TF_WORKSPACE && terraform apply -auto-approve

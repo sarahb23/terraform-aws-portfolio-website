@@ -5,7 +5,7 @@ terraform {
     organization = "zach-23"
 
     workspaces {
-      name = "portfolio"
+      prefix = "portfolio-"
     }
   }
 }
