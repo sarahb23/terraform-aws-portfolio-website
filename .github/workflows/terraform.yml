@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths-exclude:
+      # Don't trigger Terraform builds when non Terraform files are updated
+      - 'src/**'
+      - 'README.md'
   pull_request:
     branches:
       - main
@@ -75,4 +79,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform init && terraform apply -auto-approve
+        run: terraform apply -auto-approve
