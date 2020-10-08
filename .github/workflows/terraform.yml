@@ -28,10 +28,6 @@ jobs:
           # terraform_version: 0.13.0:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Echo workspace
-        id: wkspc
-        run: echo $TF_WORKSPACE
-
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -79,4 +75,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform workspace select ${{ env.TF_WORKSPACE }} && terraform apply -auto-approve
+        run: terraform workspace select $TF_WORKSPACE && terraform apply -auto-approve
