@@ -3,7 +3,7 @@
 ### Prerequisites
 - An AWS account
 - A domain registered with Route53
-- Terraform 0.13 installed locally or a Terraform cloud account if you want to use the [GitHub actions workflow](.gtihub/workflows/terraform.yml)
+- Terraform 0.13 installed locally or a Terraform cloud account if you want to use the [GitHub actions workflow](.github/workflows/terraform.yml)
 
 ### Use this as a Terraform module
 - Fork this repository
@@ -11,7 +11,7 @@
 - Declare the module
   ```terraform
      module "website" {
-         source = "https://github.com/<YOUR_GH_USERNAME>/terraform-aws-portfolio-website
+         source = "https://github.com/<YOUR_GH_USERNAME>/terraform-aws-portfolio-website"
          region = "us-east-1"
          my_url = "example.com" # This is the domain name registered with Route53
          env    = "dev" # either prod or dev
