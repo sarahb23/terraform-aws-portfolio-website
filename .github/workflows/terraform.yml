@@ -4,17 +4,19 @@ on:
   push:
     branches:
       - main
-    paths-exclude:
+    paths-ignore:
       # Don't trigger Terraform builds when non Terraform files are updated
       - 'src/**'
       - 'README.md'
+      - '.github/workflows/s3.yml'
   pull_request:
     branches:
       - main
-    paths-exclude:
+    paths-ignore:
       # Don't trigger Terraform builds when non Terraform files are updated
       - 'src/**'
       - 'README.md'
+      - '.github/workflows/s3.yml'
 
 jobs:
   terraform:
