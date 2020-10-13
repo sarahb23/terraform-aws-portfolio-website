@@ -41,11 +41,12 @@ jobs:
       id: init
       run: terraform init -input=false
     
-    - name: Get Terraform Outputs
-      id: tfout
-      run: |
-          terraform output website_bucket
-          terraform output cloudfront_id
+    - name: Get S3 Bucket
+      id: tfouts3
+      run: terraform output website_bucket
+    - name: Get CF ID
+      id: tfoutcf
+      run: terraform output cloudfront_id
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -58,7 +59,7 @@ jobs:
       run: |
         pip install jinja2
         cd web/ && python build_site.py && cd ..
-        BUCKET=${{ steps.tfout.outputs.stdout }}
-        echo $BUCKET
+        BUCKET=${{ steps.tfouts3.outputs.stdout }}
+        CF_ID=${{ steps.tfoutcf.outputs.stdout }}
         aws s3 sync web/public/ s3://$BUCKET --exclude '*.git*' --exclude '*README*'
-        aws cloudfront create-invalidation --distribution-id $(terraform output cloudfront_id) --paths "/"
+        aws cloudfront create-invalidation --distribution-id $CF_ID --paths "/"
