@@ -24,7 +24,7 @@ resource "aws_cloudfront_distribution" "this" {
     prefix          = "logs"
   }
 
-  aliases = [var.my_url]
+  aliases = [aws_s3_bucket.web.id]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
