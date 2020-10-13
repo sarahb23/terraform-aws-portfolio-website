@@ -52,5 +52,7 @@ jobs:
       run: |
         pip install jinja2
         cd web/ && python build_site.py && cd ..
-        aws s3 sync web/public/ s3://$(terraform output website_bucket) --exclude '*.git*' --exclude '*README*'
+        BUCKET=$(terraform output website_bucket)
+        echo $BUCKET
+        aws s3 sync web/public/ s3://$BUCKET --exclude '*.git*' --exclude '*README*'
         aws cloudfront create-invalidation --distribution-id $(terraform output cloudfront_id) --paths "/"
