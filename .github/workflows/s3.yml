@@ -44,8 +44,8 @@ jobs:
     - name: Get Terraform Outputs
       id: tfout
       run: |
-      terraform output website_bucket
-      terraform output cloudfront_id
+          terraform output website_bucket
+          terraform output cloudfront_id
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
