@@ -75,8 +75,6 @@ data "aws_iam_policy_document" "bucket_policy" {
   }
 }
 
-resource "null_resource" "upload_site_assets" {
-  provisioner "local-exec" {
-    command = "aws s3 sync ${path.module}/src/ s3://${local.web_bucket}/ --exclude '*.git*' --exclude 'README'"
-  }
+resource "null_resource" "placeholder" {
+
 }

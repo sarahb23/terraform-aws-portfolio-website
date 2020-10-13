@@ -1,4 +1,5 @@
-let resumeData = {
+{
+  "resumeData": {
     "name": ["Zach", "Bingham"],
     "email": "zach@zach-bingham.com",
     "role": "DevOps Engineer",
@@ -55,7 +56,7 @@ let resumeData = {
           "Documented solutions and provided training to clients, vendors, and internal teams",
           "Provided support for Windows and Linux server management, Azure Active Directory, and website availability"
         ]
-      },
+      }
     ],
     "skills": {
       "languages": [
@@ -113,10 +114,10 @@ let resumeData = {
         "credentialUrl": "https://www.youracclaim.com/earner/earned/badge/e9d83f72-3c4b-44e7-93d8-dc352a626f71"
       }
     ]
-  };
-
-let siteConfig = {
-  "analyticsId": 'UA-179550062-1',
-  "title": "Zach Bingham",
-  "resumeFileName": "Zach_Bingham_Resume_2020.pdf"
-};
+  },
+  "siteConfig": {
+    "analyticsId": "UA-179550062-1",
+    "title": "Zach Bingham",
+    "resumeFileName": "Zach_Bingham_Resume_2020.pdf"
+  }
+}

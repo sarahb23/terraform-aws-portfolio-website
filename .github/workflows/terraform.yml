@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
+      - development
     paths-ignore:
       # Don't trigger Terraform builds when non Terraform files are updated
-      - 'src/**'
+      - 'web/**'
       - 'README.md'
       - '.github/workflows/s3.yml'
   pull_request:
@@ -14,7 +15,7 @@ on:
       - main
     paths-ignore:
       # Don't trigger Terraform builds when non Terraform files are updated
-      - 'src/**'
+      - 'web/**'
       - 'README.md'
       - '.github/workflows/s3.yml'
 
@@ -48,7 +49,6 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        if: github.event_name == 'pull_request'
         run: terraform plan -no-color
         continue-on-error: true
 
@@ -84,5 +84,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.event_name == 'push'
         run: terraform apply -auto-approve

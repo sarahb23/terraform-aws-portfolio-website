@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
   provider          = aws.acm
-  domain_name       = var.my_url
+  domain_name       = aws_s3_bucket.web.id
   validation_method = "DNS"
 }
 
