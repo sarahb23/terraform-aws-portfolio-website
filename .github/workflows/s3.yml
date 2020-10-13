@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
+      - development
     paths:
-      - 'src/**'
+      - 'web/**'
 
 jobs:
   deploy:
@@ -30,6 +31,11 @@ jobs:
         # terraform_version: 0.13.0:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    
     - name: Terraform Init
       id: init
       run: terraform init -input=false
@@ -43,5 +49,6 @@ jobs:
 
     - name: Copy files to the website with the AWS CLI and invalidates cache
       run: |
-        aws s3 sync src/ s3://$(terraform output website_bucket) --exclude '*.git*' --exclude '*README*'
+        cd web/ && python build_site.py && cd ..
+        aws s3 sync web/public/ s3://$(terraform output website_bucket) --exclude '*.git*' --exclude '*README*'
         aws cloudfront create-invalidation --distribution-id $(terraform output cloudfront_id) --paths "/"
