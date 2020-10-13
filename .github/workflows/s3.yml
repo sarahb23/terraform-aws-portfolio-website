@@ -49,6 +49,7 @@ jobs:
 
     - name: Copy files to the website with the AWS CLI and invalidates cache
       run: |
+        pip install jinja2
         cd web/ && python build_site.py && cd ..
         aws s3 sync web/public/ s3://$(terraform output website_bucket) --exclude '*.git*' --exclude '*README*'
         aws cloudfront create-invalidation --distribution-id $(terraform output cloudfront_id) --paths "/"
