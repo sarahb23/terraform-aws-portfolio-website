@@ -47,21 +47,28 @@
 - A CloudFront distribution with a custom domain and ACM certificate for HTTPS
 
 ### Customizing the website
-- Site configuration data is located in [`src/js/siteData.js`](src/js/siteData,js')
+- Site configuration data is located in [`web/public/siteData.json`](web/public/siteData.json)
 - Replace values in `resumeData` with your relevant information
 - Editing `siteConfig`:
-    ```javascript
-    let siteConfig = {
+    ```json
+    "siteConfig": {
       "analyticsId": null,
       "title": "Your Name",
       "resumeFileName": null
-    };
+    }
     ```
-    - If you would like to include a PDF resume, upload it to [`src/docs/`](src/docs/) and change the value of `resumeFileName` from `null` to your file name.
+    - If you would like to include a PDF resume, upload it to [`web/public/docs`](web/public/docs/) and change the value of `resumeFileName` from `null` to your file name.
     - If you would like to use Google Analytics, replace the value of `analyticsID` with your GA Tag ID.
 - If using the GitHub actions to deploy via Terraform Cloud make sure to run this command locally to include images and files that do not go into source:
   ```bash
-  aws s3 sync src/ s3://<WEBSITE_BUCKET_NAME>/src/ --exclude '*.git*' --exclude '*README*'
+  # Build the static HTML via Python
+  cd web/ && python3 build_site.py && cd ..
+
+  # Copy static files to S3
+  aws s3 sync src/ s3://<WEBSITE_BUCKET_NAME>/web/public --exclude '*.git*' --exclude '*README*'
+
+  # OPTIONAL Invalidate CloudFront cache to reflect new changes
+  aws cloudfront create-invalidation --distribution-id <CLOUDFRONT_ID> --paths "/"
   ```
-- You can also completely remove the code from `src/` and replace it with your own!
+- You can also completely remove the code from `web/public` and replace it with your own!
     
