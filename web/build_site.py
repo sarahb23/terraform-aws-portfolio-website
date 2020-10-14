@@ -24,7 +24,7 @@ class static_html_builder:
           function gtag(){{dataLayer.push(arguments);}}
           gtag('js', new Date());
         
-          gtag('config', {analyticsId});
+          gtag('config', '{analyticsId}');
         </script>
             '''
         else:
