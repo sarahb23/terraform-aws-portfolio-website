@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                setIFrameSize();
+                $(window).resize(function () {
+                    setIFrameSize();
+                });
+            });
+            
+            function setIFrameSize() {
+                var parentDivWidth = $("#resume").parent().width();
+                var parentDivHeight = $("#resume").parent().height();
+                $("#resume")[0].setAttribute("width", parentDivWidth);
+                $("#resume")[0].setAttribute("height", parentDivHeight);
+            }
+            </script>
+    </head>
+    <body>
+        <div id="resume">
+            <iframe src="https://docs.google.com/document/d/e/2PACX-1vTS7m0bDw2Z9y1GNej2RpmMmVPWPusbVXHK_QM_9SM0tINzRa4wwOymBPFzAH12itXXw09o_ZBdliXo/pub?embedded=true" style="width: 100%; height: 100%"></iframe>
+        </div>
+    </body>
+</html>

@@ -1,8 +1,8 @@
 {
   "resumeData": {
-    "name": ["Zach", "Bingham"],
-    "email": "zach@zach-bingham.com",
-    "role": "DevOps Engineer",
+    "name": ["Sarah", "Bingham"],
+    "email": "sarah@sarah-bingham.io",
+    "role": "Sr. DevOps Engineer",
     "profilePicUrl": "img/profile.jpeg",
     "roleDescription": "",
     "socialLinks": {
@@ -11,7 +11,7 @@
           "className": "fa fa-linkedin"
         },
         "github": {
-          "url": "https://github.com/zach-23",
+          "url": "https://github.com/sarahb23",
           "className": "fa fa-github"
         }
     },
@@ -117,7 +117,6 @@
   },
   "siteConfig": {
     "analyticsId": "UA-179550062-1",
-    "title": "Zach Bingham",
-    "resumeFileName": "Zach_Bingham_Resume_2020.pdf"
+    "title": "Sarah Bingham"
   }
 }
