@@ -35,7 +35,7 @@
   ```
 - The `dev` workspace is used as a placeholder for pull request validation but can also be used to deploy using the Terraform CLI
 - Once a pull request to `main` is completed and merged, Terraform will deploy to the `prod` workspace
-- This repo uses GitHub actions to copy files to S3 and rebuild the CloudFront cache. You can use this [gist](https://gist.github.com/zach-23/484efc66ca121d8586f2f0916ca8c944) to create an IAM user and add the access keys to the repo as secrets.
+- This repo uses GitHub actions to copy files to S3 and rebuild the CloudFront cache. You can use this [gist](https://gist.github.com/sarahb23/484efc66ca121d8586f2f0916ca8c944) to create an IAM user and add the access keys to the repo as secrets.
 
 ### Resources created
 - Two S3 buckets
