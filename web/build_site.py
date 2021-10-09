@@ -3,34 +3,20 @@ from jinja2 import Environment, FileSystemLoader
 
 
 class static_html_builder:
-    def __init__ (self, site_data, output_file):
+    def __init__ (self, site_data, page):
         self.site_data = site_data
-        self.output_file = output_file
+        self.page = page
+        self.input_file = os.getcwd() + '/templates/' + page
+        self.output_file = os.getcwd() + '/public/' + page
         self.siteData = json.loads(open(self.site_data, 'r').read())
     def build(self, render_content):
         env = Environment(loader=FileSystemLoader('templates'))
-        template = env.get_template('index.html')
+        template = env.get_template(self.input_file)
         output = template.render(**render_content)
-        with open(output_file, 'w') as f:
+        with open(self.output_file, 'w') as f:
             f.write(output)
-    def google_analytics(self):
-        analyticsId = self.siteData['siteConfig']['analyticsId'] 
-        if analyticsId != None:
-            return f'''
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={analyticsId}"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){{dataLayer.push(arguments);}}
-          gtag('js', new Date());
-        
-          gtag('config', '{analyticsId}');
-        </script>
-            '''
-        else:
-            return False
-    def pdf_resume(self):
-        return f'<a class="nav-link" href="resume/resume.html">Resume</a>'
+    def resume(self):
+        return f'<a class="nav-link" href="/resume.html">Resume</a>'
     def profile(self):
         name = self.siteData['resumeData']['name']
         profilePicUrl = self.siteData['resumeData']['profilePicUrl']
@@ -177,20 +163,30 @@ class static_html_builder:
         '''
     def resume_section(self):
         return self.about() + self.experience() + self.education() + self.skills() + self.certifications()
+    def resume_page(self):
+        return f'''
+            <iframe frameborder="0" scrolling="no" src="{self.siteData['siteConfig']['embedResume']}" style="width: 75%; height: 1500px"></iframe>
+        '''
 
 site_data = os.getcwd() + '/public/siteData.json'
-output_file = os.getcwd() + '/public/index.html'
-builder = static_html_builder(site_data=site_data, output_file=output_file)
 
-def render():
+def render_index():
+    builder = static_html_builder(site_data=site_data, page='index.html')
     render_content = {}
-    if builder.google_analytics() != False:
-        render_content['analytics'] = builder.google_analytics()
-    render_content['pdfResume'] = builder.pdf_resume()
+    render_content['resume'] = builder.resume()
     render_content['profile'] = builder.profile()
     render_content['renderedContent'] = builder.resume_section()
     render_content['siteTitle'] = builder.siteData['siteConfig']['title']
     builder.build(render_content)
 
+def render_resume():
+    builder = static_html_builder(site_data=site_data, page='resume.html')
+    render_content = {}
+    render_content['profile'] = builder.profile()
+    render_content['siteTitle'] = builder.siteData['siteConfig']['title']
+    render_content['resumeIframe'] = builder.resume_page()
+    builder.build(render_content)
+
 if __name__ == "__main__":
-    render()
+    render_index()
+    render_resume()
