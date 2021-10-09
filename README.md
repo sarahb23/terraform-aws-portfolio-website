@@ -3,7 +3,7 @@
 ### Prerequisites
 - An AWS account
 - A domain registered with Route53
-- Terraform 0.13 installed locally or a Terraform cloud account if you want to use the [GitHub actions workflow](.github/workflows/terraform.yml)
+- Terraform installed locally or a Terraform cloud account if you want to use the [GitHub actions workflow](.github/workflows/terraform.yml)
 
 ### Use this as a Terraform module
 - Fork this repository
@@ -24,8 +24,6 @@
 - Edit the `backend` block in [`main.tf`](main.tf)
   ```terraform
     terraform {
-      required_version = "~> 0.13"
-    
       backend "remote" {
         organization = "REPLACE ME"
     
@@ -53,9 +51,8 @@
 - Editing `siteConfig`:
     ```json
     "siteConfig": {
-      "analyticsId": null,
       "title": "Your Name",
-      "resumeFileName": null
+      "embedResume": null
     }
     ```
     - If you would like to include a PDF resume, upload it to [`web/public/docs`](web/public/docs/) and change the value of `resumeFileName` from `null` to your file name.
