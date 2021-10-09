@@ -6,12 +6,11 @@ class static_html_builder:
     def __init__ (self, site_data, page):
         self.site_data = site_data
         self.page = page
-        self.input_file = os.getcwd() + '/templates/' + page
         self.output_file = os.getcwd() + '/public/' + page
         self.siteData = json.loads(open(self.site_data, 'r').read())
     def build(self, render_content):
         env = Environment(loader=FileSystemLoader('templates'))
-        template = env.get_template(self.input_file)
+        template = env.get_template(self.page)
         output = template.render(**render_content)
         with open(self.output_file, 'w') as f:
             f.write(output)
