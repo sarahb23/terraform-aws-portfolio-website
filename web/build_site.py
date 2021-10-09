@@ -30,11 +30,7 @@ class static_html_builder:
         else:
             return False
     def pdf_resume(self):
-        pdf_resume = self.siteData['siteConfig']['resumeFileName']
-        if pdf_resume != None:
-            return f'<a class="nav-link" href="resume/resume.html">Resume</a>'
-        else:
-            return False
+        return f'<a class="nav-link" href="resume/resume.html">Resume</a>'
     def profile(self):
         name = self.siteData['resumeData']['name']
         profilePicUrl = self.siteData['resumeData']['profilePicUrl']
@@ -190,8 +186,7 @@ def render():
     render_content = {}
     if builder.google_analytics() != False:
         render_content['analytics'] = builder.google_analytics()
-    if builder.pdf_resume() != False:
-        render_content['pdfResume'] = builder.pdf_resume()
+    render_content['pdfResume'] = builder.pdf_resume()
     render_content['profile'] = builder.profile()
     render_content['renderedContent'] = builder.resume_section()
     render_content['siteTitle'] = builder.siteData['siteConfig']['title']
