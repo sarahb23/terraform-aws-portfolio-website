@@ -1,21 +1,21 @@
 {
   "resumeData": {
-    "name": ["Zach", "Bingham"],
-    "email": "zach@zach-bingham.com",
-    "role": "DevOps Engineer",
+    "name": ["Sarah", "Bingham"],
+    "email": "sarah@sarah-bingham.io",
+    "role": "Sr. DevOps Engineer",
     "profilePicUrl": "img/profile.jpeg",
     "roleDescription": "",
     "socialLinks": {
         "linkedin": {
-          "url": "https://www.linkedin.com/in/zach-bingham-53426581/",
+          "url": "https://www.linkedin.com/in/sarah-bingham-53426581/",
           "className": "fa fa-linkedin"
         },
         "github": {
-          "url": "https://github.com/zach-23",
+          "url": "https://github.com/sarahb23",
           "className": "fa fa-github"
         }
     },
-    "aboutMe": "DevOps Engineer with three years of experience. Certifications in top three public clouds.",
+    "aboutMe": "DevOps Engineer with four years of experience. Certifications in top three public clouds.",
     "address": "Chicago, IL",
     "education": [
       {
@@ -35,7 +35,7 @@
     ],
     "work": [
       {
-        "companyName": "Slalom Consulting Inc",
+        "companyName": "Slalom Build",
         "title": "Engineer - Cloud, DevOps, and Security",
         "dateStarted": "Mar 2019",
         "dateUntil": "Present",
@@ -116,8 +116,7 @@
     ]
   },
   "siteConfig": {
-    "analyticsId": "UA-179550062-1",
-    "title": "Zach Bingham",
-    "resumeFileName": "Zach_Bingham_Resume_2020.pdf"
+    "title": "Sarah Bingham",
+    "embedResume": "https://docs.google.com/document/d/e/2PACX-1vTS7m0bDw2Z9y1GNej2RpmMmVPWPusbVXHK_QM_9SM0tINzRa4wwOymBPFzAH12itXXw09o_ZBdliXo/pub?embedded=true"
   }
 }
