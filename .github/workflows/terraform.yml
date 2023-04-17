@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set environment for branch
         run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
@@ -34,7 +34,7 @@ jobs:
               echo "TF_WORKSPACE=dev" >> $GITHUB_ENV
           fi
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
         with:
           # terraform_version: 0.13.0:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
