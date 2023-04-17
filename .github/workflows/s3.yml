@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set environment for branch
       run: |
@@ -27,13 +27,13 @@ jobs:
           fi
     
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v2
       with:
         # terraform_version: 0.13.0:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     - name: Setup Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.7
     
@@ -44,6 +44,7 @@ jobs:
     - name: Get S3 Bucket
       id: tfouts3
       run: terraform output website_bucket
+      
     - name: Get CF ID
       id: tfoutcf
       run: terraform output cloudfront_id
